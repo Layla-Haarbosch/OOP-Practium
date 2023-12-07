@@ -2,10 +2,10 @@ package practicum.p3a;
 
 public class Voetbalclub
 {
-    String naam;
-    int aantalGewonnen = 0;
-    int aantalGelijk = 0;
-    int aantalVerloren = 0;
+    private final String naam;
+    private int aantalGewonnen = 0;
+    private int aantalGelijk = 0;
+    private int aantalVerloren = 0;
 
     public Voetbalclub(String naam)
     {
@@ -14,6 +14,10 @@ public class Voetbalclub
         } else {
             this.naam = naam;
         }
+    }
+
+    public String getNaam() {
+        return this.naam;
     }
 
     public void verwerkResultaat(char ch) {

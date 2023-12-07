@@ -15,13 +15,13 @@ class VoetbalclubTest {
 
     @Test
     void test_ClubNaamLeeg_FC() {
-        assertEquals("FC", vc.naam);
+        assertEquals("FC", vc.getNaam());
     }
 
     @Test
     void test_ClubNaamNull_FC() {
         Voetbalclub club = new Voetbalclub(null);
-        assertEquals("FC", club.naam);
+        assertEquals("FC", club.getNaam());
     }
 
     @Test
