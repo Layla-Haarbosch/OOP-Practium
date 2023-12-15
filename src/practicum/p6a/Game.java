@@ -21,17 +21,20 @@ public class Game {
     public double huidigeWaarde() {
         int verschil = LocalDate.now().getYear() - this.releaseJaar;
 
-        return nieuwprijs / 130 * 100;
+        double prijs = nieuwprijs;
+
+        for (int i = 0; i < verschil; i++) {
+            prijs -= (prijs * 0.3);
+        }
+        return prijs;
     }
 
     @Override
     public boolean equals(Object andereObject) {
-        if (andereObject instanceof Game) {
-            Game game = (Game) andereObject;
+        if (andereObject instanceof Game game) {
 
             if (this.getNaam().equals(game.getNaam()) &&
                 this.releaseJaar == game.releaseJaar) {
-
                 return true;
             }
         }
@@ -42,6 +45,7 @@ public class Game {
     @Override
     public String toString() {
         String prijs = String.format(Locale.GERMAN, "%.2f", this.nieuwprijs);
-        return this.getNaam() + ", uitgegeven in " + this.releaseJaar + "; nieuwprijs: €" + prijs;
+        String huidigePrijs = String.format(Locale.GERMAN, "%.2f", this.huidigeWaarde());
+        return this.getNaam() + ", uitgegeven in " + this.releaseJaar + "; nieuwprijs: €" + prijs + " nu voor: €" + huidigePrijs;
     }
 }

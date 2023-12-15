@@ -20,6 +20,8 @@ public class Persoon {
     public boolean koop(Game g) {
         if (!mijnGames.contains(g) &&
             this.budget >= g.huidigeWaarde()) {
+
+            this.budget -= g.huidigeWaarde();
             mijnGames.add(g);
             return true;
         }
@@ -31,8 +33,11 @@ public class Persoon {
         if (!koper.mijnGames.contains(g)) {
             if (this.mijnGames.contains(g) &&
                 koper.budget >= g.huidigeWaarde()) {
-                System.out.println(g.huidigeWaarde());
+
+                koper.budget -= g.huidigeWaarde();
                 koper.mijnGames.add(g);
+                this.mijnGames.remove(g);
+                this.budget += g.huidigeWaarde();
                 return true;
             }
         }
@@ -44,10 +49,10 @@ public class Persoon {
     public String toString() {
         String prijs = String.format(Locale.GERMAN, "%.2f", this.budget);
 
-        String result = this.naam + " heeft een budget van €" + prijs + " en bezit de volgende games:\n";
+        String result = this.naam + " heeft een budget van €" + prijs + " en bezit de volgende games:";
 
         for (Game g : this.mijnGames) {
-            result += g.toString() + "\n";
+            result += "\n" + g.toString();
         }
 
         return result;
