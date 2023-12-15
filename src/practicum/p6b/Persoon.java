@@ -1,4 +1,4 @@
-package practicum.p6b.o1;
+package practicum.p6b;
 
 import practicum.p6a.Game;
 
@@ -69,5 +69,16 @@ public class Persoon {
         }
 
         return null;
+    }
+
+    public ArrayList<Game> bepaalGamesNietInBezit(ArrayList<Game> games) {
+        ArrayList<Game> nietInBezit = new ArrayList<>();
+
+        for (Game game : games) {
+            if (!this.mijnGames.contains(game)) {
+               nietInBezit.add(game) ;
+            }
+        }
+        return nietInBezit;
     }
 }

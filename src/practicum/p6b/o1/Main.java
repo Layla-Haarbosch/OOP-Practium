@@ -1,6 +1,7 @@
 package practicum.p6b.o1;
 
 import practicum.p6a.Game;
+import practicum.p6b.Persoon;
 
 public class Main {
     public static void main(String[] args) {
